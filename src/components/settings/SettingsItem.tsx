@@ -1,6 +1,6 @@
 interface SettingsItemProps {
   label: string;
-  description?: string;
+  description?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -14,9 +14,9 @@ export function SettingsItem({
       <div className="flex flex-col gap-1">
         <h3 className="font-medium">{label}</h3>
         {description && (
-          <p className="max-w-md text-sm text-muted-foreground">
+          <div className="max-w-md text-sm text-muted-foreground">
             {description}
-          </p>
+          </div>
         )}
       </div>
       <div>{children}</div>
