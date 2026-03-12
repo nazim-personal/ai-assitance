@@ -1,8 +1,8 @@
+
+'use client';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { ConversationList } from './ConversationList';
-import { Logo } from '@/components/Logo';
-import { AppWindow, Code, Compass, Folder, Image as ImageIcon, Search, Telescope, Bot, User, Edit } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import { AppWindow, Code, Compass, Folder, Image as ImageIcon, Search, Telescope, Bot, Edit } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useChat } from '@/modules/chat/hooks/useChat';
 import { useRouter } from 'next/navigation';
@@ -21,18 +21,17 @@ export function Sidebar({ activeConversationId }: SidebarProps) {
   };
 
   return (
-    <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
-       <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-2">
-        <Logo className="hidden md:flex" showText={false}/>
-        <Button variant="ghost" onClick={handleNewChat} className="flex-1 justify-start ml-2 text-base">New Chat</Button>
-        <Button variant="ghost" size="icon"><Edit className="h-5 w-5"/></Button>
-      </div>
+    <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground pt-4">
       <div className="p-2">
-        <div className="relative mb-2">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search chats" className="w-full rounded-lg bg-input pl-8" />
-        </div>
         <nav className="flex flex-col gap-1">
+            <Button variant="ghost" onClick={handleNewChat} className="w-full justify-start gap-2">
+                <Edit className="h-5 w-5" />
+                <span>New chat</span>
+            </Button>
+            <Button variant="ghost" className="w-full justify-start gap-2">
+                <Search className="h-5 w-5" />
+                <span>Search chats</span>
+            </Button>
             <Button variant="ghost" className="w-full justify-start gap-2">
                 <ImageIcon className="h-5 w-5" />
                 <span>Images</span>
@@ -76,9 +75,13 @@ export function Sidebar({ activeConversationId }: SidebarProps) {
       </ScrollArea>
       <div className="border-t border-sidebar-border p-2">
          <Button variant="ghost" className="w-full justify-start gap-2">
-            <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">N</div>
-            <span>Nazim</span>
+            <div className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center text-primary-foreground font-semibold">SN</div>
+            <div className='flex flex-col items-start'>
+              <span className='font-semibold'>Sk Abdul Nazim</span>
+              <span className='text-xs text-muted-foreground'>Free</span>
+            </div>
         </Button>
+        <Button variant="outline" className="w-full mt-2">Claim offer</Button>
       </div>
     </div>
   );
