@@ -6,7 +6,7 @@ import type { Conversation, Message, Role } from '@/modules/chat/types/chat.type
 import { createId } from '@/lib/id';
 
 // This is a server action that will be called from the store
-import { coreChatInteraction, generateConversationTitle } from '@/ai/flows/actions';
+import { coreChatInteraction } from '@/ai/flows/actions';
 
 interface ChatState {
   conversations: Conversation[];
@@ -129,8 +129,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       const currentMessages = get().messages[activeId];
       // Auto-generate title after first assistant response
       if (currentMessages.length === 2) {
-        const { title } = await generateConversationTitle({ firstMessage: content });
-        get().renameConversation(activeId, title);
+        get().renameConversation(activeId, content);
       }
 
     } catch (error) {
