@@ -90,7 +90,7 @@ const coreChatInteractionFlow = ai.defineFlow(
     });
 
     for await (const chunk of stream) {
-      if (chunk.text) {
+      if (chunk.text != null) {
         yield { text: chunk.text }; // Yield each text chunk wrapped in the output schema object
       }
     }
